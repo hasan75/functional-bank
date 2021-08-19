@@ -24,14 +24,22 @@ function updateTotalField(totalFieldId, amountValue){
 }
 function updateBalance(adjustment, isAdd){
     const balanceField = document.getElementById('balance-total');
-    const balanceText = balanceField.innerText;
-    const preBalanceAmount = parseFloat(balanceText)
+    // const balanceText = balanceField.innerText;
+    // const preBalanceAmount = parseFloat(balanceText)
+    const preBalanceAmount = getCurrentBalance()
     if(isAdd == true){
       balanceField.innerText = preBalanceAmount + adjustment  
     }
     else{
         balanceField.innerText = preBalanceAmount - adjustment
     }
+}
+
+function getCurrentBalance(){
+    const balanceField = document.getElementById('balance-total');
+    const balanceText = balanceField.innerText;
+    const preBalanceAmount = parseFloat(balanceText)
+    return preBalanceAmount;
 }
 
 //handling depostie input
@@ -51,8 +59,18 @@ document.getElementById('deposit-button').addEventListener('click',function(){
 document.getElementById('withdraw-button').addEventListener('click',function(){
     //using function for getting input
         const withdrawAmount = getInputValue('withdraw-input')
-    //get and update withdraw
+
+        const currentBalance = getCurrentBalance()
+
+        if (withdrawAmount > 0 && withdrawAmount < currentBalance) {
+            //get and update withdraw
         updateTotalField('withdraw-total', withdrawAmount)
     //balance update
         updateBalance(withdrawAmount, false)
+        }
+
+        if(withdrawAmount > currentBalance){
+            console.log('YOu can not withdraw, balance excedded')
+        }
+    
 })
