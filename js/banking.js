@@ -16,16 +16,20 @@ function getInputValue(inputID){
     return amountValue;
 }
 
+function updateTotalField(totalFieldId, amountValue){
+    const moneyAmount = document.getElementById(totalFieldId);
+    const moneyAmountText = moneyAmount.innerText;
+    const preMoneyAmount = parseFloat(moneyAmountText);
+
+    moneyAmount.innerText = preMoneyAmount + amountValue;
+}
+
 document.getElementById('deposit-button').addEventListener('click',function(){
-    //upper code is being replaced by fucntion --> getInputValue()
+//upper code is being replaced by fucntion --> getInputValue()
     const depositeAmount = getInputValue('deposit-input')
 
-//get current depostir
-    const depositeTotal = document.getElementById('deposite-total');
-    const depositeTotalText = depositeTotal.innerText;
-    const preDepostitTotalAmount = parseFloat(depositeTotalText)
-
-    depositeTotal.innerText = preDepostitTotalAmount + depositeAmount;
+//get current deposite and update deposit total
+    updateTotalField('deposite-total', depositeAmount)
 
 //update balance
     const balanceTotal = document.getElementById('balance-total')
@@ -42,12 +46,8 @@ document.getElementById('deposit-button').addEventListener('click',function(){
 document.getElementById('withdraw-button').addEventListener('click',function(){
     //using function for getting input
     const withdrawAmount = getInputValue('withdraw-input')
-
-    const withdrawTotal = document.getElementById('withdraw-total')
-    const withdrawTotalText = withdrawTotal.innerText
-    const preWithdrawTotal = parseFloat(withdrawTotalText)
-
-    withdrawTotal.innerText = preWithdrawTotal + withdrawAmount
+    //get and update withdraw
+    updateTotalField('withdraw-total', withdrawAmount)
 
 //balance update
     const balanceTotal = document.getElementById('balance-total')
