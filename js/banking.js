@@ -6,14 +6,14 @@
 // const first = doubleIt(5);
 // const second = doubleIt(7);
 function getInputValue(inputID){
-    const depositInput = document.getElementById(inputID);
-    const depositeAmountText = depositInput.value;
-    const depositeAmount = parseFloat(depositeAmountText);
+    const inputField = document.getElementById(inputID);
+    const inputAmountText = inputField.value;
+    const amountValue = parseFloat(inputAmountText);
     
     //clear input field
-    depositInput.value = '';
+    inputField.value = '';
 
-    return depositeAmount;
+    return amountValue;
 }
 
 document.getElementById('deposit-button').addEventListener('click',function(){
