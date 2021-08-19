@@ -5,8 +5,8 @@
 
 // const first = doubleIt(5);
 // const second = doubleIt(7);
-function getInputValue(){
-    const depositInput = document.getElementById('deposit-input');
+function getInputValue(inputID){
+    const depositInput = document.getElementById(inputID);
     const depositeAmountText = depositInput.value;
     const depositeAmount = parseFloat(depositeAmountText);
     
@@ -17,11 +17,9 @@ function getInputValue(){
 }
 
 document.getElementById('deposit-button').addEventListener('click',function(){
-    // const depositInput = document.getElementById('deposit-input');
-    // const depositeAmountText = depositInput.value;
-    // const depositeAmount = parseFloat(depositeAmountText)
     //upper code is being replaced by fucntion --> getInputValue()
-    const depositeAmount = getInputValue()
+    const depositeAmount = getInputValue('deposit-input')
+
 //get current depostir
     const depositeTotal = document.getElementById('deposite-total');
     const depositeTotalText = depositeTotal.innerText;
@@ -42,9 +40,8 @@ document.getElementById('deposit-button').addEventListener('click',function(){
 //withdraw kahini
 
 document.getElementById('withdraw-button').addEventListener('click',function(){
-    const withdrawInput = document.getElementById('withdraw-input')
-    const withdrawInputText = withdrawInput.value
-    const withdrawAmount = parseFloat(withdrawInputText)
+    //using function for getting input
+    const withdrawAmount = getInputValue('withdraw-input')
 
     const withdrawTotal = document.getElementById('withdraw-total')
     const withdrawTotalText = withdrawTotal.innerText
