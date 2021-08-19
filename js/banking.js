@@ -38,12 +38,14 @@ function updateBalance(adjustment, isAdd){
 document.getElementById('deposit-button').addEventListener('click',function(){
 //upper code is being replaced by fucntion --> getInputValue()
     const depositeAmount = getInputValue('deposit-input')
-    if(depositeAmount > 0) {
+
+    if ( depositeAmount > 0 ) {
         //get current deposite and update deposit total
     updateTotalField('deposite-total', depositeAmount)
     //update balance
         updateBalance(depositeAmount,true)
     }
+        
 })
 //withdraw kahini
 document.getElementById('withdraw-button').addEventListener('click',function(){
