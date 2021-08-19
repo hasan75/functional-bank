@@ -15,44 +15,42 @@ function getInputValue(inputID){
 }
 
 function updateTotalField(totalFieldId, amountValue){
-    debugger;
+   // debugger;
     const totalElement = document.getElementById(totalFieldId);
     const totalText = totalElement.innerText;
     const previousTotal = parseFloat(totalText);
 
     totalElement.innerText = previousTotal + amountValue;
 }
+function updateBalance(adjustment, isAdd){
+    const balanceField = document.getElementById('balance-total');
+    const balanceText = balanceField.innerText;
+    const preBalanceAmount = parseFloat(balanceText)
+    if(isAdd == true){
+      balanceField.innerText = preBalanceAmount + adjustment  
+    }
+    else{
+        balanceField.innerText = preBalanceAmount - adjustment
+    }
+}
 
+//handling depostie input
 document.getElementById('deposit-button').addEventListener('click',function(){
 //upper code is being replaced by fucntion --> getInputValue()
     const depositeAmount = getInputValue('deposit-input')
-
-//get current deposite and update deposit total
+    if(depositeAmount > 0) {
+        //get current deposite and update deposit total
     updateTotalField('deposite-total', depositeAmount)
-
-//update balance
-    const balanceTotal = document.getElementById('balance-total')
-    const balanceTotalText = balanceTotal.innerText
-    const preBalanceTotal = parseFloat(balanceTotalText)
-
-    balanceTotal.innerText = preBalanceTotal + depositeAmount
-    
-
+    //update balance
+        updateBalance(depositeAmount,true)
+    }
 })
-
 //withdraw kahini
-
 document.getElementById('withdraw-button').addEventListener('click',function(){
     //using function for getting input
-    const withdrawAmount = getInputValue('withdraw-input')
+        const withdrawAmount = getInputValue('withdraw-input')
     //get and update withdraw
-    updateTotalField('withdraw-total', withdrawAmount)
-
-//balance update
-    const balanceTotal = document.getElementById('balance-total')
-    const balanceText = balanceTotal.innerText
-    const preBalanceAmount = parseFloat(balanceText)
-
-    balanceTotal.innerText = preBalanceAmount - withdrawAmount
-    
+        updateTotalField('withdraw-total', withdrawAmount)
+    //balance update
+        updateBalance(withdrawAmount, false)
 })
