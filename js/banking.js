@@ -2,14 +2,12 @@
 //     const result = num*2;
 //     return result;
 // }
-
 // const first = doubleIt(5);
 // const second = doubleIt(7);
 function getInputValue(inputID){
     const inputField = document.getElementById(inputID);
     const inputAmountText = inputField.value;
     const amountValue = parseFloat(inputAmountText);
-    
     //clear input field
     inputField.value = '';
 
@@ -17,11 +15,12 @@ function getInputValue(inputID){
 }
 
 function updateTotalField(totalFieldId, amountValue){
-    const moneyAmount = document.getElementById(totalFieldId);
-    const moneyAmountText = moneyAmount.innerText;
-    const preMoneyAmount = parseFloat(moneyAmountText);
+    debugger;
+    const totalElement = document.getElementById(totalFieldId);
+    const totalText = totalElement.innerText;
+    const previousTotal = parseFloat(totalText);
 
-    moneyAmount.innerText = preMoneyAmount + amountValue;
+    totalElement.innerText = previousTotal + amountValue;
 }
 
 document.getElementById('deposit-button').addEventListener('click',function(){
